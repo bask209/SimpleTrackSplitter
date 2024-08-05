@@ -1,0 +1,9 @@
+# Always install pytorch first
+
+numpy==1.26.4
+pydub
+ffmpeg-python
+ffmpeg
+demucs
+soundfile
+yt-dlp
