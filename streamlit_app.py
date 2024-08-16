@@ -48,6 +48,10 @@ def create_zip(separated_files):
 
 st.title("Audio File/YouTube Audio Downloader and Separator")
 
+# Initialize session state for separated files
+if 'separated_files' not in st.session_state:
+    st.session_state.separated_files = None
+
 option = st.selectbox(
     'Select input type:',
     ('Audio File', 'YouTube Link')
@@ -64,17 +68,20 @@ if option == 'Audio File':
             tmp_file.write(audio_file.getbuffer())
             audio_file_path = tmp_file.name
         
-        separated_files = separate_audio(audio_file_path)
+        if st.button("Process Audio"):
+            st.session_state.separated_files = separate_audio(audio_file_path)
+            st.write("Audio processing complete!")
         
-        # Create a zip of the separated files
-        zip_buffer = create_zip(separated_files)
-        
-        st.download_button(
-            label="Download All Separated Files",
-            data=zip_buffer,
-            file_name="separated_files.zip",
-            mime="application/zip"
-        )
+        if st.session_state.separated_files is not None:
+            # Create a zip of the separated files
+            zip_buffer = create_zip(st.session_state.separated_files)
+            
+            st.download_button(
+                label="Download All Separated Files",
+                data=zip_buffer,
+                file_name="separated_files.zip",
+                mime="application/zip"
+            )
 
 elif option == 'YouTube Link':
     youtube_link = st.text_input("Enter YouTube link")
@@ -84,10 +91,10 @@ elif option == 'YouTube Link':
                 audio_file_path = download_audio_from_youtube(youtube_link)
                 st.success('Download complete!')
                 
-                separated_files = separate_audio(audio_file_path)
+                st.session_state.separated_files = separate_audio(audio_file_path)
                 
                 # Create a zip of the separated files
-                zip_buffer = create_zip(separated_files)
+                zip_buffer = create_zip(st.session_state.separated_files)
                 
                 st.download_button(
                     label="Download All Separated Files",
