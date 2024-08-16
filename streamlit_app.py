@@ -2,9 +2,10 @@ import streamlit as st
 import yt_dlp
 import os
 import io
+import zipfile
+import tempfile
 from pydub import AudioSegment
 from demucs import separate
-import tempfile
 import torchaudio
 
 # Dummy implementation of the separate function for demonstration purposes.
@@ -31,6 +32,20 @@ def download_audio_from_youtube(url):
         audio_file = ydl.prepare_filename(info_dict)
     return audio_file
 
+def create_zip(separated_files):
+    # Create a BytesIO object to hold the ZIP data
+    zip_buffer = io.BytesIO()
+    
+    # Create a ZIP file in the BytesIO object
+    with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+        for file_path in separated_files:
+            # Add each file to the ZIP archive
+            zip_file.write(file_path, os.path.basename(file_path))
+    
+    # Seek to the beginning of the BytesIO object
+    zip_buffer.seek(0)
+    return zip_buffer
+
 st.title("Audio File/YouTube Audio Downloader and Separator")
 
 option = st.selectbox(
@@ -51,14 +66,15 @@ if option == 'Audio File':
         
         separated_files = separate_audio(audio_file_path)
         
-        for file_path in separated_files:
-            with open(file_path, "rb") as f:
-                st.download_button(
-                    label=f"Download {os.path.basename(file_path)}",
-                    data=f,
-                    file_name=os.path.basename(file_path),
-                    mime="audio/wav"
-                )
+        # Create a zip of the separated files
+        zip_buffer = create_zip(separated_files)
+        
+        st.download_button(
+            label="Download All Separated Files",
+            data=zip_buffer,
+            file_name="separated_files.zip",
+            mime="application/zip"
+        )
 
 elif option == 'YouTube Link':
     youtube_link = st.text_input("Enter YouTube link")
@@ -70,13 +86,14 @@ elif option == 'YouTube Link':
                 
                 separated_files = separate_audio(audio_file_path)
                 
-                for file_path in separated_files:
-                    with open(file_path, "rb") as f:
-                        st.download_button(
-                            label=f"Download {os.path.basename(file_path)}",
-                            data=f,
-                            file_name=os.path.basename(file_path),
-                            mime="audio/wav"
-                        )
+                # Create a zip of the separated files
+                zip_buffer = create_zip(separated_files)
+                
+                st.download_button(
+                    label="Download All Separated Files",
+                    data=zip_buffer,
+                    file_name="separated_files.zip",
+                    mime="application/zip"
+                )
         else:
             st.error("Please enter a valid YouTube link")
