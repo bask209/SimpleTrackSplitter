@@ -2,9 +2,9 @@ FROM python:3.10.7-slim
 
 WORKDIR /src/app
 
-COPY freeze.txt freeze.txt
+COPY ./src/freeze.txt freeze.txt
 
-COPY streamlit_app.py streamlit_app.py
+COPY ./src/streamlit_app.py streamlit_app.py
 
 RUN pip install -r freeze.txt
 RUN apt-get update -y

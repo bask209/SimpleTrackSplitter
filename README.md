@@ -76,3 +76,63 @@ Well, at this stage, just hop into the *youtube_separate.py* file and change the
 After changing the link you can run the app.
 
 Don't forget to activate your virtual environment **before doing anything**.
+
+## Update 08/19/2024:
+
+I have dockerized this application, so now it's even easier to install and run, so: 
+
+## Docker image build and running:
+
+You can now build this docker image and run it like this: 
+
+So, first clone the repo: 
+
+```sh
+git clone https://github.com/bask209/SimpleTrackSplitter.git
+```
+
+Then, install Docker: 
+
+[Have a read here](https://docs.docker.com/get-docker/)
+
+Once you've got Docker installed, open a terminal and navigate to the folder where you git cloned the repo, then: 
+
+```sh
+docker build -t simpletracksplitter .
+```
+
+This will create a new image that you can use like this: 
+
+```sh
+docker run -p 8501:8501 simpletracksplitter 
+```
+
+or
+
+```sh
+docker run -p 8501:8501 -d simpletracksplitter 
+```
+
+So that way you get your terminal back and this runs detached. 
+
+If everything goes well you should now be able to access the app running in your own computer going to http://localhost:8501/
+
+But we all know that running this kind of things and doing commands and all that is not always going to work... Right? So: 
+
+## Actual easiest way to run this! 
+
+Thanks for getting this far.
+
+In order to run this the easiest way, I've uploaded this image to dockerhub.
+
+This means that as long as you have Docker installed in your computer, you should be able to simply run: 
+
+```sh
+docker run -p 8501:8501 -d bask209/simpletracksplitter:latest
+```
+
+Then open a web browser and navigate here: 
+
+http://localhost:8501/
+
+This should be working for you now. 
