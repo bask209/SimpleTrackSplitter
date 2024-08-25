@@ -1,6 +1,6 @@
 version: '3'
 services:
-  sts:
-    image: sts
+  simpletracksplitter:
+    image: bask209/simpletracksplitter:latest
     ports:
       - "8501:8501"

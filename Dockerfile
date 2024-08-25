@@ -4,10 +4,10 @@ WORKDIR /src/app
 
 COPY ./src/freeze.txt freeze.txt
 
-COPY ./src/streamlit_app.py streamlit_app.py
+COPY ./src/simple_track_separator.py simple_track_separator.py
 
 RUN pip install -r freeze.txt
 RUN apt-get update -y
 RUN apt-get install ffmpeg -y
 
-CMD ["streamlit", "run","streamlit_app.py"]
+CMD ["streamlit", "run","simple_track_separator.py"]
