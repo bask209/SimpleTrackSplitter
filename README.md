@@ -136,3 +136,30 @@ Then open a web browser and navigate here:
 http://localhost:8501/
 
 This should be working for you now. 
+
+## Update 08/25/2024:
+
+I've realized I want this to get to musicians, tinkerers, people that love to explore music.
+
+So, I will work on tutorials that teach how to run this:
+
+1. Please go to Docker and install Docker Desktop: [Official Docker Documentation](https://docs.docker.com/desktop/install/windows-install/)
+
+    Also a video tutorial (there's a lot on YouTube): [How To Install Docker on Windows? A Step-by-Step Guide](https://www.youtube.com/watch?v=XgRGI0Pw2mM)
+
+    Y también en español: [Docker, Instalación en Windows (más WSL, Window Subsystem for Linux)](https://www.youtube.com/watch?v=ZO4KWQfUBBc) 
+
+2. Now that you have docker desktop installed, you will see something like this: 
+
+    ![alt text](.\screenshots\DockerDesktopScreen.png)
+
+    You should have no containers, or, just the hello-world container. Now we will look for the image, so we click on the Images button:
+
+     ![alt text](.\screenshots\DockerDesktopScreenImages.png)
+
+     As you can see at the bottom left, it says the engine is running. This means that now we can open a single terminal command and paste the docker command above: 
+
+     
+
+
+
