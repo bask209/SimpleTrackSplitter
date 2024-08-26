@@ -151,13 +151,25 @@ So, I will work on tutorials that teach how to run this:
 
 2. Now that you have docker desktop installed, you will see something like this: 
 
-    ![alt text](.\screenshots\DockerDesktopScreen.png)
+    ![alt text](screenshots\DockerDesktopScreen.png)
 
     You should have no containers, or, just the hello-world container. Now we will look for the image, so we click on the Images button:
 
-     ![alt text](.\screenshots\DockerDesktopScreenImages.png)
+     ![alt text](screenshots\DockerDesktopScreenImages.png)
 
-     As you can see at the bottom left, it says the engine is running. This means that now we can open a single terminal command and paste the docker command above: 
+     As you can see at the bottom left, it says the engine is running. This means that now we can open a single terminal command (open the Windows terminal, or Command Prompt from the start menu) and paste the docker command above:
+
+     https://github.com/user-attachments/assets/5e6b222f-82c6-49b9-949b-19f1c8dd25d6
+
+     After this commands finishes running, you'll be able to open any web browser and type http://localhost:8501/ then the app will pop up and you will be able to use it.
+
+     ![image](https://github.com/user-attachments/assets/8e8839bc-2d60-47d1-acd4-79776a5180ad)
+
+     To finish running it, you can just close the Docker engine or hit stop under the Docker Desktop Actions button in the containers tab:
+
+     ![image](https://github.com/user-attachments/assets/5c83fcd4-d816-446f-8f33-75d5a2155ec4)
+
+
 
      
 
