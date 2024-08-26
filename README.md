@@ -151,11 +151,11 @@ So, I will work on tutorials that teach how to run this:
 
 2. Now that you have docker desktop installed, you will see something like this: 
 
-    ![alt text](screenshots\DockerDesktopScreen.png)
+     ![DockerDesktopScreen](https://github.com/user-attachments/assets/a2887c57-e962-4648-92ca-25f286ce88a7)
 
     You should have no containers, or, just the hello-world container. Now we will look for the image, so we click on the Images button:
 
-     ![alt text](screenshots\DockerDesktopScreenImages.png)
+     ![DockerDesktopScreenImages](https://github.com/user-attachments/assets/15866b91-4558-485f-b466-50d3fe0df516)
 
      As you can see at the bottom left, it says the engine is running. This means that now we can open a single terminal command (open the Windows terminal, or Command Prompt from the start menu) and paste the docker command above:
 
